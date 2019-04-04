@@ -1,13 +1,13 @@
-import {FETCH_PRODUCTS_SUCCESS} from "../actions/productsActions";
+import {FETCH_LINK_SUCCESS} from "../actions/productsActions";
 
 const initialState = {
-  products: []
+  shortUrl: null,
 };
 
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-      case FETCH_PRODUCTS_SUCCESS:
-          return {...state, products: action.products};
+      case FETCH_LINK_SUCCESS:
+          return {...state, shortUrl: action.response};
       default:
           return state;
   }

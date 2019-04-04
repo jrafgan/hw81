@@ -9,7 +9,7 @@ import App from './App';
 import productsReducer from './store/reducers/productsReducer';
 
 const rootReducer = combineReducers({
-    products: productsReducer
+    response: productsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

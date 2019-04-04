@@ -1,26 +1,22 @@
 import axios from '../../axios-api';
 
-export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
-export const CREATE_PRODUCT_SUCCESS = 'CREATE_PRODUCT_SUCCESS';
+export const FETCH_LINK_SUCCESS = 'FETCH_LINK_SUCCESS';
 
-export const fetchProductsSuccess = products => ({type: FETCH_PRODUCTS_SUCCESS, products});
-export const createProductSuccess = () => ({type: CREATE_PRODUCT_SUCCESS});
+export const fetchLinkSuccess = response => ({type: FETCH_LINK_SUCCESS, response});
 
-export const fetchProducts = () => {
+export const goToUrl = (shortUrl) => {
     return dispatch => {
-        return axios.get('/products').then(
-            response => dispatch(fetchProductsSuccess(response.data))
+        return axios.get('/links/' + shortUrl).then(
+            response => console.log(response.data)
         );
     }
 };
 
-export const createProduct = productData => {
+export const shortLink = originalLink => {
     return dispatch => {
-        return axios.post('/products', productData).then(
-            () => {
-
-        console.log(productData);
-        dispatch(createProductSuccess());
-    });
-};
+        return axios.post('/links', originalLink).then(
+            response => {
+                dispatch(fetchLinkSuccess(response.data));
+            });
+    };
 };
