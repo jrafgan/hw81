@@ -3,6 +3,7 @@ import './App.css'
 import {shortLink} from "./store/actions/productsActions";
 import connect from "react-redux/es/connect/connect";
 import nanoid from 'nanoid';
+import {apiURL} from "./constants";
 
 
 class App extends Component {
@@ -34,7 +35,7 @@ class App extends Component {
                 </form>
                 {this.props.shortUrl ? <div className="result">
                     <p>Your Link Now looks like this: </p>
-                    <div className="url_div"><h3>http://localhost:8003/{this.props.shortUrl.shortUrl}</h3></div>
+                    <div className="url_div"><h3><a href={apiURL+"/"+this.props.shortUrl.shortUrl}>{apiURL+"/"+this.props.shortUrl.shortUrl}</a></h3></div>
                 </div> : null}
             </div>
         );
