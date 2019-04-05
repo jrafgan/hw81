@@ -1,14 +1,12 @@
 const express = require('express');
-const path = require('path');
 const nanoid = require('nanoid');
-const config = require('../config');
 const Link = require('../models/Link');
 
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//     Link.find().then(links => res.send(links)).catch(() => res.sendStatus(500));
-// });
+router.get('/', (req, res) => {
+    Link.find().then(links => res.send(links)).catch(() => res.sendStatus(500));
+});
 
 router.get('/:shortUrl', (req, res) => {
     console.log('req.params.shortUrl = ', req.params.shortUrl);

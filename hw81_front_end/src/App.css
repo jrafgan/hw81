@@ -21,3 +21,8 @@
 h2 {
   margin-top: 20%;
 }
+
+.url_div {
+  border: 1px solid blue;
+  padding: 0 20px;
+}

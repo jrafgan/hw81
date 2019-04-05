@@ -11,7 +11,7 @@ app.use(express.json());
 const port = 8003;
 
 mongoose.connect('mongodb://localhost/links', {useNewUrlParser: true}).then(()=>{
-    app.use('/links', links);
+    app.use('/', links);
 
     app.listen(port, () => {
         console.log(`Server started on ${port} port`);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css'
-import {goToUrl, shortLink} from "./store/actions/productsActions";
+import {shortLink} from "./store/actions/productsActions";
 import connect from "react-redux/es/connect/connect";
 import nanoid from 'nanoid';
 
@@ -22,12 +22,8 @@ class App extends Component {
         this.props.shortLink(this.state);
     };
 
-    goToUrl = (e) => {
-        e.preventDefault();
-        this.props.goToUrl(this.state.shortUrl);
-    };
-
     render() {
+
         return (
             <div className="App">
                 <h2>Shorten Your link</h2>
@@ -38,7 +34,7 @@ class App extends Component {
                 </form>
                 {this.props.shortUrl ? <div className="result">
                     <p>Your Link Now looks like this: </p>
-                    <button onClick={this.goToUrl}>http://localhost:8003/{this.props.shortUrl.shortUrl}</button>
+                    <div className="url_div"><h3>http://localhost:8003/{this.props.shortUrl.shortUrl}</h3></div>
                 </div> : null}
             </div>
         );
@@ -50,8 +46,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    shortLink: (originalLink) => dispatch(shortLink(originalLink)),
-    goToUrl: (shortLink) => dispatch(goToUrl(shortLink)),
+    shortLink: (originalLink) => dispatch(shortLink(originalLink))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
